@@ -16,4 +16,4 @@ This page outlines the UWA implementation of CVL housed at Pawsey. It contains d
 
 ## OpenStack
 
-{{% render-code file="stack.yaml" language="yaml" /%}}
+{{< render-code file="/static/stack.yaml" language="yaml" >}}
