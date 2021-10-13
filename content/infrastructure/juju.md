@@ -1,6 +1,5 @@
 ---
-layout: page
-title: Juju deployment
+title: Juju
 ---
 
 [JAAS](https://jaas.ai/)
