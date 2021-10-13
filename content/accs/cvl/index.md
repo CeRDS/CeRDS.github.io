@@ -13,9 +13,3 @@ This page outlines the UWA implementation of CVL housed at Pawsey. It contains d
 ## DevSecOps
 
 ## Ansible
-
-## OpenStack
-
-{{ $file := .Get "files/openstack/stack.yaml" | readFile }}
-{{ $lang := .Get "language" }}
-{{ (print "```" $lang "\n" $file "\n```") | markdownify }}
