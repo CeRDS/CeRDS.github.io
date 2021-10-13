@@ -16,6 +16,4 @@ This page outlines the UWA implementation of CVL housed at Pawsey. It contains d
 
 ## OpenStack
 
-{{ $file := .Get "stack.yaml" | readFile }}
-{{ $lang := .Get "language" }}
-{{ (print "```" $lang "\n" $file "\n```") | markdownify }}
+{{% code file="stack.yaml" language="yaml" %}}
