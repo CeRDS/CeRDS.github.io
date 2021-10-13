@@ -1,0 +1,68 @@
+heat_template_version: 2018-08-31
+
+description: OS::Custom::Server
+
+parameters:
+  name: { type: string }
+  image: { type: string }
+  flavor: { type: string }
+  key_name: { type: string }
+  metadata: { type: json, default: '{}' }
+  network: { type: string }
+  networks: { type: json, default: [] }
+  floating_network: { type: string, default: "None" }
+  security_groups: { type: json }
+
+conditions:
+  expose:
+    not:
+      equals:
+        - { get_param: floating_network }
+        - "None"
+
+resources:
+  port:
+    type: OS::Neutron::Port
+    properties:
+      network: { get_param: network }
+      security_groups: { get_param: security_groups }
+
+  floating_ip:
+    type: OS::Neutron::FloatingIP
+    properties:
+      floating_network: { get_param: floating_network }
+      port_id: { get_resource: port }
+    condition: expose
+
+  server:
+    type: OS::Nova::Server
+    properties:
+      flavor: { get_param: flavor }
+      image: { get_param: image }
+      key_name: { get_param: key_name }
+      metadata: { get_param: metadata }
+      name: { get_param: name }
+      networks:
+        list_concat:
+          - [{ port: { get_resource: port } }]
+          - { get_param: networks }
+      user_data:
+        str_replace:
+          params:
+            ${HOSTNAME}: { get_param: name }
+          template: |
+            #cloud-config
+            fqdn: ${HOSTNAME}
+            locale: en_AU.utf8
+            timezone: Australia/Perth
+            packages:
+            - haveged
+            - python3
+            - python3-pip
+            package_update: true
+            ssh_authorized_keys:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2TgwBfxieczdy3B/6XawtEPU7w+2aXHnmPhjg8Gh23/ZevlJNTS0PBSeLSjkJLCew1GVfowgdfH8rXnCMcj0ZSGjEthfM6Q4jrciPUp/f6CACmXDUoWInuE3S2sgGANG2Dy7KQSoJhhAROtdWN83CWUruZ8F8hNiQIwyoaL209LYmH07j7SQ/RFp+oo/V+LYtR58KSUKH41VL8isasGzhL+cvf1bHfxRi2DK8Jj1nPS/3i7j/XCXma5HNejEyTTovyv5CyGCxCyGYYhv0//vz8j232pAEMtsa/6sXwqA9maatcqM9oCObbm1TBrv7ndA5KhNNE/pMOQbmPjgFDdW45xszM/reqCJzl2j1E8ah5LLbrJl6bpMLaoyMmLOuMYtQz9sCVspUiIenEyk2EAw/fhjLWsWs1T1TUZF+Uv+gcnrljI0diN/0GVX5DlfBgsjDl59uLfZAC4zjeHEZ/YgswMK5qlv8HtmJUqT+vRD72zXp7n99E1gNcwpEqhthy50= 00078081@DEP53766
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDD8BDrtWHCZ2/lSc5WWGdx2k1u4HA8SIaapyd+Ko40k5ABhwKwI+E3scNXtzlhmT6ZcrlAulcfOWdr8X9/kwi4edllwad6vekitW2IQ9JaH8BptolYTf2w4qNnj33zdrnf/4t4O6bTUdKhc7CIqejKZX4JzZSQKiw9eta9tTPr8We7zhq5EoOdC2/3Bde2viH6c371WC+3aHbYpp9fCp0o+CUpdzpvNB4bMPcioDtXqnUHxJXFl+0/fR5s3srHqE0MGuiTm1YmoSl/fnkjKubx27Zbb2rP4fWj/aEUsGEkvLS46JegD/iGOzN9+bMrp4J4OBf4R2iN/qvo8zrmi+4vkWEnRYdpQk5yvUo2El08v8NK8zSVObva/928AZZDAxgAT+ZnzIE+PYxHtmeAa6C3faQbxbt9Z23s4RBGcRp7LfO/kyUOTDc2ni3JfgCAF/B4zSjOeisfZuN7gOM8lVelIIdaWhDWRvZH4mfB87euiTjxk+EFLWzULuduz4ojfik= dean.taylor@ghtmbp.gohitech.net
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDEft4lgAQwIAt1bjKmQhhHyGzeTT4HLs3r0iP9P5C7dcZ73XKAG2N7Iakmpyv8IwD6nTS1ytDagWHDN08nPxXN1nSaEh/SAeBaP7nckv++KRbVyAHyC7JwyDDaJw8NOZ/+u8USGLx3frIs2X1Z4YhnccPKpbINax9QHmV2+dcsjE+tVZ4RUxEW8zH/oGurLBxMDXmJ20Ln+P9/FxQpm3FLRnNZ3P41gc+Pp/Akqb7bLJp04Cgm6UOSEmSuvqwohmbsjX5B/KGn4guxcchSlAxKSxWZsaEfg3dGqh7Mv8WULHd+Ex4NVwHrngcgsP80YDCsl/hI1I29DscKxZ5liEfV5WHjtcxWPpQgz53qGhP0L1i7DnwlIOPWbSSwLV9dj6W5ugW6WvB9wDZF548FB8AReQ5dgmmsmC5cljpNKjlx6QR5VNalCBYDaAFH2bXu5huhVf8a8s2+lbCoEvQT4ilqbTTdAsr/RtEwa/k2bqw7S1B5l/F+Gj1VWN3ygOiNIcU= dean.taylor@dmav001.cmca.uwa.edu.au
+      user_data_format: RAW
+      user_data_update_policy: IGNORE

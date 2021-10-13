@@ -5,7 +5,7 @@
 <title>CVL@UWA - Characterisation eResearch & Data Science (CeRDS)</title>
 <meta name=generator content="Hugo 0.88.1">
 <link href=https://cerds.github.io//index.xml rel=alternate type=application/rss+xml>
-<link rel=canonical href=https://cerds.github.io/accs/cvl-at-uwa/>
+<link rel=canonical href=https://cerds.github.io/accs/cvl/>
 <link rel=stylesheet href=https://cerds.github.io/css/theme.min.css>
 <script src=https://use.fontawesome.com/releases/v5.0.6/js/all.js></script>
 <link rel=stylesheet href=https://cerds.github.io/css/chroma.min.css>
@@ -16,22 +16,22 @@
 <meta property="og:title" content="CVL@UWA">
 <meta property="og:description" content="Overview CVL@UWA is a part of the Characterisation Virtual Laboratory National project. It is hosted at the Pawsey Supercomputing Centre primarily within the Nimbus Cloud Service.
 This page outlines the UWA implementation of CVL housed at Pawsey. It contains details about design decisions, workflows, tools and other miscellaneous material.
-DevSecOps Ansible OpenStack {{ $file := .Get &ldquo;files/openstack/stack.yaml&rdquo; | readFile }} {{ $lang := .Get &ldquo;language&rdquo; }} {{ (print &ldquo;&#34; $lang &#34;\n&#34; $file &#34;\n&#34;) | markdownify }}">
+DevSecOps Ansible ">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://cerds.github.io/accs/cvl-at-uwa/"><meta property="article:section" content="accs">
+<meta property="og:url" content="https://cerds.github.io/accs/cvl/"><meta property="article:section" content="accs">
 <meta property="article:published_time" content="2021-09-23T09:33:00+08:00">
 <meta property="article:modified_time" content="2021-09-23T09:33:00+08:00">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="CVL@UWA">
 <meta name=twitter:description content="Overview CVL@UWA is a part of the Characterisation Virtual Laboratory National project. It is hosted at the Pawsey Supercomputing Centre primarily within the Nimbus Cloud Service.
 This page outlines the UWA implementation of CVL housed at Pawsey. It contains details about design decisions, workflows, tools and other miscellaneous material.
-DevSecOps Ansible OpenStack {{ $file := .Get &ldquo;files/openstack/stack.yaml&rdquo; | readFile }} {{ $lang := .Get &ldquo;language&rdquo; }} {{ (print &ldquo;&#34; $lang &#34;\n&#34; $file &#34;\n&#34;) | markdownify }}">
+DevSecOps Ansible ">
 <meta itemprop=name content="CVL@UWA">
 <meta itemprop=description content="Overview CVL@UWA is a part of the Characterisation Virtual Laboratory National project. It is hosted at the Pawsey Supercomputing Centre primarily within the Nimbus Cloud Service.
 This page outlines the UWA implementation of CVL housed at Pawsey. It contains details about design decisions, workflows, tools and other miscellaneous material.
-DevSecOps Ansible OpenStack {{ $file := .Get &ldquo;files/openstack/stack.yaml&rdquo; | readFile }} {{ $lang := .Get &ldquo;language&rdquo; }} {{ (print &ldquo;&#34; $lang &#34;\n&#34; $file &#34;\n&#34;) | markdownify }}"><meta itemprop=datePublished content="2021-09-23T09:33:00+08:00">
+DevSecOps Ansible "><meta itemprop=datePublished content="2021-09-23T09:33:00+08:00">
 <meta itemprop=dateModified content="2021-09-23T09:33:00+08:00">
-<meta itemprop=wordCount content="76">
+<meta itemprop=wordCount content="51">
 <meta itemprop=keywords content></head>
 <body><div class=container><header>
 <h1>Characterisation eResearch & Data Science (CeRDS)</h1>
@@ -49,16 +49,12 @@ DevSecOps Ansible OpenStack {{ $file := .Get &ldquo;files/openstack/stack.yaml&r
 <p>This page outlines the UWA implementation of CVL housed at Pawsey. It contains details about design decisions, workflows, tools and other miscellaneous material.</p>
 <h2 id=devsecops>DevSecOps</h2>
 <h2 id=ansible>Ansible</h2>
-<h2 id=openstack>OpenStack</h2>
-<p>{{ $file := .Get &ldquo;files/openstack/stack.yaml&rdquo; | readFile }}
-{{ $lang := .Get &ldquo;language&rdquo; }}
-{{ (print &ldquo;<code>" $lang "\n" $file "\n</code>") | markdownify }}</p>
 <div class=edit-meta>
 Last updated on 23 Sep 2021
 <br>
 Published on 23 Sep 2021
-<br></div><nav class=pagination><a class="nav nav-prev" href=https://cerds.github.io/accs/ title=Accs><i class="fas fa-arrow-left" aria-hidden=true></i>&nbsp;Prev - Accs</a>
-<a class="nav nav-next" href=https://cerds.github.io/accs/cvl/ title=CVL@UWA>Next - CVL@UWA <i class="fas fa-arrow-right" aria-hidden=true></i></a>
+<br></div><nav class=pagination><a class="nav nav-prev" href=https://cerds.github.io/accs/cvl-at-uwa/ title=CVL@UWA><i class="fas fa-arrow-left" aria-hidden=true></i>&nbsp;Prev - CVL@UWA</a>
+<a class="nav nav-next" href=https://cerds.github.io/deployments/ title=Deployments>Next - Deployments <i class="fas fa-arrow-right" aria-hidden=true></i></a>
 </nav><footer><p class=powered>Powered by <a href=https://gohugo.io>Hugo</a>. Theme by <a href=https://themes.gohugo.io/hugo-theme-techdoc/>TechDoc</a>. Designed by <a href=https://github.com/thingsym/hugo-theme-techdoc>Thingsym</a>.</p>
 </footer>
 </main>
@@ -68,8 +64,8 @@ Published on 23 Sep 2021
 <li><a href=https://cerds.github.io/>Home</a></li>
 <li class=parent><a href=https://cerds.github.io/accs/>Accs</a>
 <ul class=sub-menu>
-<li class=active><a href=https://cerds.github.io/accs/cvl-at-uwa/>CVL@UWA</a></li>
-<li><a href=https://cerds.github.io/accs/cvl/>CVL@UWA</a></li>
+<li><a href=https://cerds.github.io/accs/cvl-at-uwa/>CVL@UWA</a></li>
+<li class=active><a href=https://cerds.github.io/accs/cvl/>CVL@UWA</a></li>
 </ul>
 </li>
 <li><a href=https://cerds.github.io/deployments/>Deployments</a>
