@@ -1,0 +1,242 @@
+heat_template_version: 2018-08-31
+
+description: Characterisation Virtual Laboratory
+
+parameters:
+  dns_domain:
+    type: string
+    label: DNS domain
+    description: DNS domain
+    default: uwa.edu.au
+  dns_nameservers:
+    type: comma_delimited_list
+    label: DNS name servers
+    description: A comma delimited list of name servers
+    default: ["1.1.1.1","8.8.8.8"]
+  flavor:
+    type: string
+    label: Instance type
+    description: Image flavor to use for compute nodes
+    default: n3.4c16r
+  flavor_gpu:
+    type: string
+    label: Instance type vGPU
+    description: Image flavor to use for GPU compute nodes
+    default: r1.V100-4C
+  flavor_gpu_large:
+    type: string
+    label: Instance type vGPU
+    description: Image flavor to use for GPU compute nodes
+    default: r1.V100-8C
+  floating_network:
+    type: string
+    label: Floating network name
+    description: Floating network name
+    default: "None"
+  floating_subnet:
+    type: string
+    label: Floating subnet
+    description: Floating subnet
+  image:
+    type: string
+    label: Image name
+    description: Image name as server base
+    default: "Pawsey - Ubuntu 20.04 - 2021-02"
+  image_gpu:
+    type: string
+    label: Image name GPU
+    description: Image name for server base (GPU)
+  key_name:
+    type: string
+    label: Key name
+    description: Name of key-pair to be used for compute instance
+    default: DEP53766
+  network_external:
+    type: string
+    label: External network
+    description: ID or name of the external network
+    default: "Public external"
+  security_group_rules:
+    type: json
+    label: Firewall rules
+    description: Additional firewall rules
+    default: []
+  server_cpu_count:
+    type: number
+    label: Compute node count
+    description: Number of compute nodes to create
+    default: 0
+  server_gpu_count:
+    type: number
+    label: GPU compute node count
+    description: Number of GPU compute nodes to create
+    default: 0
+  server_gpu_large_count:
+    type: number
+    label: GPU compute node large count
+    description: Number of large GPU compute nodes to create
+    default: 0
+  server_login_count:
+    type: number
+    label: Login node count
+    description: Number of login nodes to create
+    default: 0
+  server_mgmt_count:
+    type: number
+    label: Management node count
+    description: Number of management nodes to create
+    default: 0
+  subnet_host_routes:
+    type: json
+    label: static routes
+    description: Static routes
+    default: []
+  subnet_pool:
+    type: string
+    label: IPAM subnet pool name
+    description: Project subnet pool name for IP range to be allocated from
+    default: rfc1918
+
+resources:
+  network:
+    type: OS::Neutron::Net
+    properties:
+      name: { get_param: OS::stack_name }
+
+  subnet:
+    type: OS::Neutron::Subnet
+    properties:
+      name: { get_param: OS::stack_name }
+      network_id: { get_resource: network }
+      dns_nameservers: { get_param: dns_nameservers }
+      host_routes: { get_param: subnet_host_routes }
+      subnetpool: { get_param: subnet_pool }
+
+  router:
+    type: OS::Neutron::Router
+    properties:
+      admin_state_up: true
+      external_gateway_info:
+        network: { get_param: network_external }
+      name: { get_param: OS::stack_name }
+
+  router_if:
+    type: OS::Neutron::RouterInterface
+    properties:
+      router: { get_resource: router }
+      subnet: { get_resource: subnet }
+
+  security_group:
+    type: OS::Neutron::SecurityGroup
+    properties:
+      description: "Default security rules"
+      name: { get_param: OS::stack_name }
+      rules:
+        list_concat:
+          - 
+            - { direction: egress }
+            - { direction: egress, ethertype: "IPv6" }
+            - { remote_mode: remote_group_id }
+            - { ethertype: IPv6, remote_mode: remote_group_id }
+          - { get_param: security_group_rules }
+        
+
+  expose_security_group:
+    type: OS::Neutron::SecurityGroup
+    properties:
+      description: "Generic external security rules"
+      name: { list_join: ['-',[{ get_param: OS::stack_name }, "expose"]] }
+      rules:
+        - { port_range_max: 22, port_range_min: 22, protocol: tcp, remote_ip_prefix: "0.0.0.0/0" }
+
+  management:
+    type: OS::Heat::ResourceGroup
+    properties:
+      count: { get_param: server_mgmt_count }
+      resource_def:
+        type: OS::Custom::Server
+        properties:
+          flavor: { get_param: flavor }
+          image: { get_param: image }
+          key_name: { get_param: key_name }
+          metadata:
+            groups: "management"
+            stack_name: { get_param: OS::stack_name }
+          name: { list_join: ['.',["mgmt-%index%", get_param: OS::stack_name, get_param: dns_domain]] }
+          network: { get_resource: network }
+          security_groups:
+            - { get_resource: security_group }
+
+  login:
+    type: OS::Heat::ResourceGroup
+    properties:
+      count: { get_param: server_login_count }
+      resource_def:
+        type: OS::Custom::Server
+        properties:
+          flavor: { get_param: flavor }
+          floating_network: { get_param: floating_network }
+          image: { get_param: image }
+          key_name: { get_param: key_name }
+          metadata:
+            groups: "login"
+            stack_name: { get_param: OS::stack_name }
+          name: { list_join: ['.',["login-%index%", get_param: OS::stack_name, get_param: dns_domain]] }
+          network: { get_resource: network }
+          security_groups:
+            - { get_resource: security_group }
+            - { get_resource: expose_security_group }
+
+  compute:
+    type: OS::Heat::ResourceGroup
+    properties:
+      count: { get_param: server_cpu_count }
+      resource_def:
+        type: OS::Custom::Server
+        properties:
+          flavor: { get_param: flavor }
+          image: { get_param: image }
+          key_name: { get_param: key_name }
+          metadata:
+            groups: "compute,desktop"
+            stack_name: { get_param: OS::stack_name }
+          name: { list_join: ['.',["desktop-%index%", get_param: OS::stack_name, get_param: dns_domain]] }
+          network: { get_resource: network }
+          security_groups:
+            - { get_resource: security_group }
+
+  compute_gpu:
+    type: OS::Heat::ResourceGroup
+    properties:
+      count: { get_param: server_gpu_count }
+      resource_def:
+        type: OS::Custom::Server
+        properties:
+          flavor: { get_param: flavor_gpu }
+          image: { get_param: image_gpu }
+          key_name: { get_param: key_name }
+          metadata:
+            groups: "gpu,desktop"
+            stack_name: { get_param: OS::stack_name }
+          name: { list_join: ['.',["gpu-%index%", get_param: OS::stack_name, get_param: dns_domain]] }
+          network: { get_resource: network }
+          security_groups:
+            - { get_resource: security_group }
+
+  compute_gpu_large:
+    type: OS::Heat::ResourceGroup
+    properties:
+      count: { get_param: server_gpu_large_count }
+      resource_def:
+        type: OS::Custom::Server
+        properties:
+          flavor: { get_param: flavor_gpu_large }
+          image: { get_param: image_gpu }
+          key_name: { get_param: key_name }
+          metadata:
+            groups: "gpu,desktop"
+            stack_name: { get_param: OS::stack_name }
+          name: { list_join: ['.',["gpu-lg-%index%", get_param: OS::stack_name, get_param: dns_domain]] }
+          network: { get_resource: network }
+          security_groups:
+            - { get_resource: security_group }
