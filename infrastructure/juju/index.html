@@ -2,10 +2,10 @@
 <head><meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Juju deployment - Characterisation eResearch & Data Science (CeRDS)</title>
+<title>Juju - Characterisation eResearch & Data Science (CeRDS)</title>
 <meta name=generator content="Hugo 0.88.1">
 <link href=https://cerds.github.io//index.xml rel=alternate type=application/rss+xml>
-<link rel=canonical href=https://cerds.github.io/deployments/juju/>
+<link rel=canonical href=https://cerds.github.io/infrastructure/juju/>
 <link rel=stylesheet href=https://cerds.github.io/css/theme.min.css>
 <script src=https://use.fontawesome.com/releases/v5.0.6/js/all.js></script>
 <link rel=stylesheet href=https://cerds.github.io/css/chroma.min.css>
@@ -13,16 +13,16 @@
 <script src=https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script>
 <script src=https://cerds.github.io/js/bundle.js></script><style>:root{}</style>
-<meta property="og:title" content="Juju deployment">
+<meta property="og:title" content="Juju">
 <meta property="og:description" content="JAAS
 Client setup sudo snap install juju --classic Simplestreams $ openstack image list $ cd $(mktemp -d) $ mkdir simplestreams $ juju metadata generate-image -a amd64 -d ./simplestreams -i 90303547-6dd7-42f8-a173-fe4f5902ed30 -r RegionOne -s focal -u https://nimbus.pawsey.org.au:5000/v3 $ juju metadata generate-image -a amd64 -d ./simplestreams -i 3a0daf62-69f0-42fd-90ff-e8fea01f7531 -r RegionOne -s bionic -u https://nimbus.pawsey.org.au:5000/v3 Image metadata files have been written to: /tmp/tmp.GTcJ2OUBed/simplestreams/images/streams/v1. For Juju to use this metadata, the files need to be put into the image metadata search path.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://cerds.github.io/deployments/juju/"><meta property="article:section" content="deployments">
+<meta property="og:url" content="https://cerds.github.io/infrastructure/juju/"><meta property="article:section" content="infrastructure">
 <meta name=twitter:card content="summary">
-<meta name=twitter:title content="Juju deployment">
+<meta name=twitter:title content="Juju">
 <meta name=twitter:description content="JAAS
 Client setup sudo snap install juju --classic Simplestreams $ openstack image list $ cd $(mktemp -d) $ mkdir simplestreams $ juju metadata generate-image -a amd64 -d ./simplestreams -i 90303547-6dd7-42f8-a173-fe4f5902ed30 -r RegionOne -s focal -u https://nimbus.pawsey.org.au:5000/v3 $ juju metadata generate-image -a amd64 -d ./simplestreams -i 3a0daf62-69f0-42fd-90ff-e8fea01f7531 -r RegionOne -s bionic -u https://nimbus.pawsey.org.au:5000/v3 Image metadata files have been written to: /tmp/tmp.GTcJ2OUBed/simplestreams/images/streams/v1. For Juju to use this metadata, the files need to be put into the image metadata search path.">
-<meta itemprop=name content="Juju deployment">
+<meta itemprop=name content="Juju">
 <meta itemprop=description content="JAAS
 Client setup sudo snap install juju --classic Simplestreams $ openstack image list $ cd $(mktemp -d) $ mkdir simplestreams $ juju metadata generate-image -a amd64 -d ./simplestreams -i 90303547-6dd7-42f8-a173-fe4f5902ed30 -r RegionOne -s focal -u https://nimbus.pawsey.org.au:5000/v3 $ juju metadata generate-image -a amd64 -d ./simplestreams -i 3a0daf62-69f0-42fd-90ff-e8fea01f7531 -r RegionOne -s bionic -u https://nimbus.pawsey.org.au:5000/v3 Image metadata files have been written to: /tmp/tmp.GTcJ2OUBed/simplestreams/images/streams/v1. For Juju to use this metadata, the files need to be put into the image metadata search path.">
 <meta itemprop=wordCount content="474">
@@ -37,7 +37,7 @@ Client setup sudo snap install juju --classic Simplestreams $ openstack image li
 </nav>
 </div>
 <div class=content-container>
-<main><h1>Juju deployment</h1>
+<main><h1>Juju</h1>
 <p><a href=https://jaas.ai/>JAAS</a></p>
 <h2 id=client-setup>Client setup</h2>
 <pre tabindex=0><code class=language-console data-lang=console>sudo snap install juju --classic
@@ -149,8 +149,8 @@ juju deploy cs:~containers/charmed-kubernetes-545 --overlay overlay.yaml --overl
   - [<span style=color:#e6db74>&#39;openstack-integrator&#39;</span>, <span style=color:#e6db74>&#39;kubernetes-master:openstack&#39;</span>]
   - [<span style=color:#e6db74>&#39;openstack-integrator&#39;</span>, <span style=color:#e6db74>&#39;kubernetes-worker:openstack&#39;</span>]
 </code></pre></div><div class=edit-meta>
-<br></div><nav class=pagination><a class="nav nav-prev" href=https://cerds.github.io/deployments/ title=Deployments><i class="fas fa-arrow-left" aria-hidden=true></i>&nbsp;Prev - Deployments</a>
-<a class="nav nav-next" href=https://cerds.github.io/accs/ title="The Australian Characterisation Commons at Scale (ACCS)">Next - The Australian Characterisation Commons at Scale (ACCS) <i class="fas fa-arrow-right" aria-hidden=true></i></a>
+<br></div><nav class=pagination><a class="nav nav-prev" href=https://cerds.github.io/infrastructure/ title="Infrastructure as Code (IaC)"><i class="fas fa-arrow-left" aria-hidden=true></i>&nbsp;Prev - Infrastructure as Code (IaC)</a>
+<a class="nav nav-next" href=https://cerds.github.io/infrastructure/kubernetes/ title="Kubernetes, Helm and Kustomize">Next - Kubernetes, Helm and Kustomize <i class="fas fa-arrow-right" aria-hidden=true></i></a>
 </nav><footer><p class=powered>Powered by <a href=https://gohugo.io>Hugo</a>. Theme by <a href=https://themes.gohugo.io/hugo-theme-techdoc/>TechDoc</a>. Designed by <a href=https://github.com/thingsym/hugo-theme-techdoc>Thingsym</a>.</p>
 </footer>
 </main>
@@ -168,9 +168,16 @@ juju deploy cs:~containers/charmed-kubernetes-545 --overlay overlay.yaml --overl
 </li>
 </ul>
 </li>
-<li class=parent><a href=https://cerds.github.io/deployments/>Deployments</a>
+<li><a href=https://cerds.github.io/ais/>Australian Imaging Service (AIS)</a>
 <ul class=sub-menu>
-<li class=active><a href=https://cerds.github.io/deployments/juju/>Juju deployment</a></li>
+<li><a href=https://cerds.github.io/ais/ml_clara/>Machine Learning (ML) and Clara</a></li>
+<li><a href=https://cerds.github.io/ais/xnat/>XNAT</a></li>
+</ul>
+</li>
+<li class=parent><a href=https://cerds.github.io/infrastructure/>Infrastructure as Code (IaC)</a>
+<ul class=sub-menu>
+<li class=active><a href=https://cerds.github.io/infrastructure/juju/>Juju</a></li>
+<li><a href=https://cerds.github.io/infrastructure/kubernetes/>Kubernetes, Helm and Kustomize</a></li>
 </ul>
 </li>
 </ul>
