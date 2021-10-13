@@ -1,0 +1,134 @@
+<!doctype html><html lang=en-us>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Ansible - Characterisation eResearch & Data Science (CeRDS)</title>
+<meta name=generator content="Hugo 0.88.1">
+<link href=https://cerds.github.io//index.xml rel=alternate type=application/rss+xml>
+<link rel=canonical href=https://cerds.github.io/accs/cvl/ansible/>
+<link rel=stylesheet href=https://cerds.github.io/css/theme.min.css>
+<script src=https://use.fontawesome.com/releases/v5.0.6/js/all.js></script>
+<link rel=stylesheet href=https://cerds.github.io/css/chroma.min.css>
+<script src=https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script>
+<script src=https://cerds.github.io/js/bundle.js></script><style>:root{}</style>
+<meta property="og:title" content="Ansible">
+<meta property="og:description" content="Client configuration # ~/.ansible.cfg # https://docs.ansible.com/ansible/latest/reference_appendices/config.html # ansible-doc -t cache -l # ansible-doc -t cache <plugin name> # [defaults] fact_caching = jsonfile fact_caching_connection = ~/.ansible/tmp/cache force_valid_group_names = ignore #force_valid_group_names = silently gathering = smart inventory = ~/.ansible/hosts #inventory = ~/.ansible/hosts,~/.ansible/vagrant_inventory.py log_path = ~/.ansible/tmp/ansible.log remote_user = ubuntu roles_path = ~/.ansible/roles:~/accs/HPCasCode/roles:/usr/share/ansible/roles:/etc/ansible/roles #syslog_facility =  deprecation_warnings = False # Ansible Vault settings ask_vault_pass = False vault_password_file = ~/.ansible/bin/passwd [inventory] cache = True enable_plugins = openstack.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cerds.github.io/accs/cvl/ansible/"><meta property="article:section" content="accs">
+<meta property="article:published_time" content="2021-10-13T20:56:18+08:00">
+<meta property="article:modified_time" content="2021-10-13T20:56:18+08:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Ansible">
+<meta name=twitter:description content="Client configuration # ~/.ansible.cfg # https://docs.ansible.com/ansible/latest/reference_appendices/config.html # ansible-doc -t cache -l # ansible-doc -t cache <plugin name> # [defaults] fact_caching = jsonfile fact_caching_connection = ~/.ansible/tmp/cache force_valid_group_names = ignore #force_valid_group_names = silently gathering = smart inventory = ~/.ansible/hosts #inventory = ~/.ansible/hosts,~/.ansible/vagrant_inventory.py log_path = ~/.ansible/tmp/ansible.log remote_user = ubuntu roles_path = ~/.ansible/roles:~/accs/HPCasCode/roles:/usr/share/ansible/roles:/etc/ansible/roles #syslog_facility =  deprecation_warnings = False # Ansible Vault settings ask_vault_pass = False vault_password_file = ~/.ansible/bin/passwd [inventory] cache = True enable_plugins = openstack.">
+<meta itemprop=name content="Ansible">
+<meta itemprop=description content="Client configuration # ~/.ansible.cfg # https://docs.ansible.com/ansible/latest/reference_appendices/config.html # ansible-doc -t cache -l # ansible-doc -t cache <plugin name> # [defaults] fact_caching = jsonfile fact_caching_connection = ~/.ansible/tmp/cache force_valid_group_names = ignore #force_valid_group_names = silently gathering = smart inventory = ~/.ansible/hosts #inventory = ~/.ansible/hosts,~/.ansible/vagrant_inventory.py log_path = ~/.ansible/tmp/ansible.log remote_user = ubuntu roles_path = ~/.ansible/roles:~/accs/HPCasCode/roles:/usr/share/ansible/roles:/etc/ansible/roles #syslog_facility =  deprecation_warnings = False # Ansible Vault settings ask_vault_pass = False vault_password_file = ~/.ansible/bin/passwd [inventory] cache = True enable_plugins = openstack."><meta itemprop=datePublished content="2021-10-13T20:56:18+08:00">
+<meta itemprop=dateModified content="2021-10-13T20:56:18+08:00">
+<meta itemprop=wordCount content="134">
+<meta itemprop=keywords content></head>
+<body><div class=container><header>
+<h1>Characterisation eResearch & Data Science (CeRDS)</h1>
+</header>
+<div class=global-menu>
+<nav>
+<ul>
+<li><a href=/>About</a></li></ul>
+</nav>
+</div>
+<div class=content-container>
+<main><h1>Ansible</h1>
+<h2 id=client-configuration>Client configuration</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ini data-lang=ini><span style=color:#75715e># ~/.ansible.cfg</span>
+<span style=color:#75715e># https://docs.ansible.com/ansible/latest/reference_appendices/config.html</span>
+<span style=color:#75715e># ansible-doc -t cache -l</span>
+<span style=color:#75715e># ansible-doc -t cache &lt;plugin name&gt;</span>
+<span style=color:#75715e>#</span>
+<span style=color:#66d9ef>[defaults]</span>
+<span style=color:#a6e22e>fact_caching</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>jsonfile</span>
+<span style=color:#a6e22e>fact_caching_connection</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>~/.ansible/tmp/cache</span>
+<span style=color:#a6e22e>force_valid_group_names</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>ignore</span>
+<span style=color:#75715e>#force_valid_group_names = silently</span>
+<span style=color:#a6e22e>gathering</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>smart</span>
+<span style=color:#a6e22e>inventory</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>~/.ansible/hosts</span>
+<span style=color:#75715e>#inventory = ~/.ansible/hosts,~/.ansible/vagrant_inventory.py</span>
+<span style=color:#a6e22e>log_path</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>~/.ansible/tmp/ansible.log</span>
+<span style=color:#a6e22e>remote_user</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>ubuntu</span>
+<span style=color:#a6e22e>roles_path</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>~/.ansible/roles:~/accs/HPCasCode/roles:/usr/share/ansible/roles:/etc/ansible/roles</span>
+<span style=color:#75715e>#syslog_facility = </span>
+<span style=color:#a6e22e>deprecation_warnings</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>False</span>
+
+<span style=color:#75715e># Ansible Vault settings</span>
+<span style=color:#a6e22e>ask_vault_pass</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>False</span>
+<span style=color:#a6e22e>vault_password_file</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>~/.ansible/bin/passwd</span>
+
+<span style=color:#66d9ef>[inventory]</span>
+<span style=color:#a6e22e>cache</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>True</span>
+<span style=color:#a6e22e>enable_plugins</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>openstack.cloud.openstack,script,yaml</span>
+
+<span style=color:#66d9ef>[ssh_connection]</span>
+<span style=color:#a6e22e>ssh_args</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>-o StrictHostKeyChecking=accept-new</span>
+
+</code></pre></div>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>plugin</span>: <span style=color:#ae81ff>openstack.cloud.openstack</span>
+<span style=color:#75715e># ~/.ansible/hosts/openstack.yaml</span>
+<span style=color:#75715e># https://docs.ansible.com/ansible/latest/collections/openstack/cloud/openstack_inventory.html</span>
+<span style=color:#75715e># https://github.com/openstack/ansible-collections-openstack/blob/master/plugins/inventory/openstack.py</span>
+<span style=color:#f92672>cache</span>: <span style=color:#66d9ef>yes</span>
+<span style=color:#f92672>compose</span>:
+  <span style=color:#f92672>ansible_host</span>: <span style=color:#ae81ff>openstack.public_v4 | default(openstack.private_v4, true)</span>
+  <span style=color:#f92672>ansible_ssh_host</span>: <span style=color:#ae81ff>openstack.public_v4 | default(openstack.private_v4, true)</span>
+  <span style=color:#f92672>ansible_user</span>: <span style=color:#ae81ff>openstack.metadata.ansible_user | default(&#34;ubuntu&#34;)</span>
+<span style=color:#f92672>expand_hostvars</span>: <span style=color:#66d9ef>no</span>
+<span style=color:#75715e>#fail_on_errors: yes</span>
+<span style=color:#75715e>#all_projects: yes</span>
+<span style=color:#75715e>## Allows the use of `groups` csv server metadata field</span>
+<span style=color:#f92672>legacy_groups</span>: <span style=color:#66d9ef>yes</span>
+<span style=color:#f92672>groups</span>:
+  <span style=color:#f92672>cvl_uwa</span>: <span style=color:#ae81ff>openstack.name.endswith(&#39;cvl.uwa.edu.au&#39;) or (openstack.metadata.project_name == &#34;CVLCLUSTER&#34;)</span>
+<span style=color:#f92672>keyed_groups</span>:
+  - <span style=color:#f92672>prefix</span>: <span style=color:#ae81ff>project_name</span>
+    <span style=color:#f92672>key</span>: <span style=color:#ae81ff>openstack.location.project.name</span>
+<span style=color:#f92672>leading_separator</span>: <span style=color:#66d9ef>no</span>
+
+</code></pre></div>
+<div class=edit-meta>
+Last updated on 13 Oct 2021
+<br>
+Published on 13 Oct 2021
+<br></div><nav class=pagination><a class="nav nav-prev" href=https://cerds.github.io/accs/cvl/ title="Characterisation Virtual Laboratory (CVL@UWA)"><i class="fas fa-arrow-left" aria-hidden=true></i>&nbsp;Prev - Characterisation Virtual Laboratory (CVL@UWA)</a>
+<a class="nav nav-next" href=https://cerds.github.io/accs/cvl/openstack/ title=OpenStack>Next - OpenStack <i class="fas fa-arrow-right" aria-hidden=true></i></a>
+</nav><footer><p class=powered>Powered by <a href=https://gohugo.io>Hugo</a>. Theme by <a href=https://themes.gohugo.io/hugo-theme-techdoc/>TechDoc</a>. Designed by <a href=https://github.com/thingsym/hugo-theme-techdoc>Thingsym</a>.</p>
+</footer>
+</main>
+<div class=sidebar>
+<nav class=open-menu>
+<ul>
+<li><a href=https://cerds.github.io/>Home</a></li>
+<li class=parent><a href=https://cerds.github.io/accs/>The Australian Characterisation Commons at Scale (ACCS)</a>
+<ul class=sub-menu>
+<li class=parent><a href=https://cerds.github.io/accs/cvl/>Characterisation Virtual Laboratory (CVL@UWA)</a>
+<ul class=sub-menu>
+<li class=active><a href=https://cerds.github.io/accs/cvl/ansible/>Ansible</a></li>
+<li><a href=https://cerds.github.io/accs/cvl/openstack/>OpenStack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href=https://cerds.github.io/deployments/>Deployments</a>
+<ul class=sub-menu>
+<li><a href=https://cerds.github.io/deployments/juju/>Juju deployment</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+<div class=sidebar-footer></div>
+</div>
+</div><a href=# id=backtothetop-fixed class=backtothetop data-backtothetop-duration=600 data-backtothetop-easing=easeOutQuart data-backtothetop-fixed-fadein=1000 data-backtothetop-fixed-fadeout=1000 data-backtothetop-fixed-bottom=10 data-backtothetop-fixed-right=20>
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

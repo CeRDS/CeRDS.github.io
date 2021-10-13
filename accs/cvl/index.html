@@ -2,7 +2,7 @@
 <head><meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>CVL@UWA - Characterisation eResearch & Data Science (CeRDS)</title>
+<title>Characterisation Virtual Laboratory (CVL@UWA) - Characterisation eResearch & Data Science (CeRDS)</title>
 <meta name=generator content="Hugo 0.88.1">
 <link href=https://cerds.github.io//index.xml rel=alternate type=application/rss+xml>
 <link rel=canonical href=https://cerds.github.io/accs/cvl/>
@@ -13,293 +13,33 @@
 <script src=https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script>
 <script src=https://cerds.github.io/js/bundle.js></script><style>:root{}</style>
-<meta property="og:title" content="CVL@UWA">
-<meta property="og:description" content="Overview CVL@UWA is a part of the Characterisation Virtual Laboratory National project. It is hosted at the Pawsey Supercomputing Centre primarily within the Nimbus Cloud Service.
-This page outlines the UWA implementation of CVL housed at Pawsey. It contains details about design decisions, workflows, tools and other miscellaneous material.
-DevSecOps Ansible OpenStack heat_template_version: 2018-08-31 description: Characterisation Virtual Laboratory parameters: dns_domain: type: string label: DNS domain description: DNS domain default: uwa.edu.au dns_nameservers: type: comma_delimited_list label: DNS name servers description: A comma delimited list of name servers default: [&#34;1.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://cerds.github.io/accs/cvl/"><meta property="article:section" content="accs">
-<meta property="article:published_time" content="2021-09-23T09:33:00+08:00">
-<meta property="article:modified_time" content="2021-09-23T09:33:00+08:00">
+<meta property="og:title" content="Characterisation Virtual Laboratory (CVL@UWA)">
+<meta property="og:description" content>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cerds.github.io/accs/cvl/">
 <meta name=twitter:card content="summary">
-<meta name=twitter:title content="CVL@UWA">
-<meta name=twitter:description content="Overview CVL@UWA is a part of the Characterisation Virtual Laboratory National project. It is hosted at the Pawsey Supercomputing Centre primarily within the Nimbus Cloud Service.
-This page outlines the UWA implementation of CVL housed at Pawsey. It contains details about design decisions, workflows, tools and other miscellaneous material.
-DevSecOps Ansible OpenStack heat_template_version: 2018-08-31 description: Characterisation Virtual Laboratory parameters: dns_domain: type: string label: DNS domain description: DNS domain default: uwa.edu.au dns_nameservers: type: comma_delimited_list label: DNS name servers description: A comma delimited list of name servers default: [&#34;1.">
-<meta itemprop=name content="CVL@UWA">
-<meta itemprop=description content="Overview CVL@UWA is a part of the Characterisation Virtual Laboratory National project. It is hosted at the Pawsey Supercomputing Centre primarily within the Nimbus Cloud Service.
-This page outlines the UWA implementation of CVL housed at Pawsey. It contains details about design decisions, workflows, tools and other miscellaneous material.
-DevSecOps Ansible OpenStack heat_template_version: 2018-08-31 description: Characterisation Virtual Laboratory parameters: dns_domain: type: string label: DNS domain description: DNS domain default: uwa.edu.au dns_nameservers: type: comma_delimited_list label: DNS name servers description: A comma delimited list of name servers default: [&#34;1."><meta itemprop=datePublished content="2021-09-23T09:33:00+08:00">
-<meta itemprop=dateModified content="2021-09-23T09:33:00+08:00">
-<meta itemprop=wordCount content="795">
-<meta itemprop=keywords content></head>
+<meta name=twitter:title content="Characterisation Virtual Laboratory (CVL@UWA)">
+<meta name=twitter:description content>
+<meta itemprop=name content="Characterisation Virtual Laboratory (CVL@UWA)">
+<meta itemprop=description content></head>
 <body><div class=container><header>
 <h1>Characterisation eResearch & Data Science (CeRDS)</h1>
 </header>
 <div class=global-menu>
 <nav>
 <ul>
-<li><a href=/>Home</a></li></ul>
+<li><a href=/>About</a></li></ul>
 </nav>
 </div>
 <div class=content-container>
-<main><h1>CVL@UWA</h1>
-<h2 id=overview>Overview</h2>
-<p>CVL@UWA is a part of the <a href=https://www.cvl.org.au/>Characterisation Virtual Laboratory</a> National project. It is hosted at the <a href=https://pawsey.org.au/>Pawsey Supercomputing Centre</a> primarily within the <a href=https://pawsey.org.au/systems/nimbus-cloud-service/>Nimbus Cloud Service</a>.</p>
-<p>This page outlines the UWA implementation of CVL housed at Pawsey. It contains details about design decisions, workflows, tools and other miscellaneous material.</p>
-<h2 id=devsecops>DevSecOps</h2>
-<h2 id=ansible>Ansible</h2>
-<h2 id=openstack>OpenStack</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>heat_template_version</span>: <span style=color:#e6db74>2018-08-31</span>
-
-<span style=color:#f92672>description</span>: <span style=color:#ae81ff>Characterisation Virtual Laboratory</span>
-
-<span style=color:#f92672>parameters</span>:
-  <span style=color:#f92672>dns_domain</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>DNS domain</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>DNS domain</span>
-    <span style=color:#f92672>default</span>: <span style=color:#ae81ff>uwa.edu.au</span>
-  <span style=color:#f92672>dns_nameservers</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>comma_delimited_list</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>DNS name servers</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>A comma delimited list of name servers</span>
-    <span style=color:#f92672>default</span>: [<span style=color:#e6db74>&#34;1.1.1.1&#34;</span>,<span style=color:#e6db74>&#34;8.8.8.8&#34;</span>]
-  <span style=color:#f92672>flavor</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>Instance type</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Image flavor to use for compute nodes</span>
-    <span style=color:#f92672>default</span>: <span style=color:#ae81ff>n3.4c16r</span>
-  <span style=color:#f92672>flavor_gpu</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>Instance type vGPU</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Image flavor to use for GPU compute nodes</span>
-    <span style=color:#f92672>default</span>: <span style=color:#ae81ff>r1.V100-4C</span>
-  <span style=color:#f92672>flavor_gpu_large</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>Instance type vGPU</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Image flavor to use for GPU compute nodes</span>
-    <span style=color:#f92672>default</span>: <span style=color:#ae81ff>r1.V100-8C</span>
-  <span style=color:#f92672>floating_network</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>Floating network name</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Floating network name</span>
-    <span style=color:#f92672>default</span>: <span style=color:#e6db74>&#34;None&#34;</span>
-  <span style=color:#f92672>floating_subnet</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>Floating subnet</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Floating subnet</span>
-  <span style=color:#f92672>image</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>Image name</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Image name as server base</span>
-    <span style=color:#f92672>default</span>: <span style=color:#e6db74>&#34;Pawsey - Ubuntu 20.04 - 2021-02&#34;</span>
-  <span style=color:#f92672>image_gpu</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>Image name GPU</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Image name for server base (GPU)</span>
-  <span style=color:#f92672>key_name</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>Key name</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Name of key-pair to be used for compute instance</span>
-    <span style=color:#f92672>default</span>: <span style=color:#ae81ff>DEP53766</span>
-  <span style=color:#f92672>network_external</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>External network</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>ID or name of the external network</span>
-    <span style=color:#f92672>default</span>: <span style=color:#e6db74>&#34;Public external&#34;</span>
-  <span style=color:#f92672>security_group_rules</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>json</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>Firewall rules</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Additional firewall rules</span>
-    <span style=color:#f92672>default</span>: []
-  <span style=color:#f92672>server_cpu_count</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>number</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>Compute node count</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Number of compute nodes to create</span>
-    <span style=color:#f92672>default</span>: <span style=color:#ae81ff>0</span>
-  <span style=color:#f92672>server_gpu_count</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>number</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>GPU compute node count</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Number of GPU compute nodes to create</span>
-    <span style=color:#f92672>default</span>: <span style=color:#ae81ff>0</span>
-  <span style=color:#f92672>server_gpu_large_count</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>number</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>GPU compute node large count</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Number of large GPU compute nodes to create</span>
-    <span style=color:#f92672>default</span>: <span style=color:#ae81ff>0</span>
-  <span style=color:#f92672>server_login_count</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>number</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>Login node count</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Number of login nodes to create</span>
-    <span style=color:#f92672>default</span>: <span style=color:#ae81ff>0</span>
-  <span style=color:#f92672>server_mgmt_count</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>number</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>Management node count</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Number of management nodes to create</span>
-    <span style=color:#f92672>default</span>: <span style=color:#ae81ff>0</span>
-  <span style=color:#f92672>subnet_host_routes</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>json</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>static routes</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Static routes</span>
-    <span style=color:#f92672>default</span>: []
-  <span style=color:#f92672>subnet_pool</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>string</span>
-    <span style=color:#f92672>label</span>: <span style=color:#ae81ff>IPAM subnet pool name</span>
-    <span style=color:#f92672>description</span>: <span style=color:#ae81ff>Project subnet pool name for IP range to be allocated from</span>
-    <span style=color:#f92672>default</span>: <span style=color:#ae81ff>rfc1918</span>
-
-<span style=color:#f92672>resources</span>:
-  <span style=color:#f92672>network</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Neutron::Net</span>
-    <span style=color:#f92672>properties</span>:
-      <span style=color:#f92672>name</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>OS::stack_name }</span>
-
-  <span style=color:#f92672>subnet</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Neutron::Subnet</span>
-    <span style=color:#f92672>properties</span>:
-      <span style=color:#f92672>name</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>OS::stack_name }</span>
-      <span style=color:#f92672>network_id</span>: { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>network }</span>
-      <span style=color:#f92672>dns_nameservers</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>dns_nameservers }</span>
-      <span style=color:#f92672>host_routes</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>subnet_host_routes }</span>
-      <span style=color:#f92672>subnetpool</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>subnet_pool }</span>
-
-  <span style=color:#f92672>router</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Neutron::Router</span>
-    <span style=color:#f92672>properties</span>:
-      <span style=color:#f92672>admin_state_up</span>: <span style=color:#66d9ef>true</span>
-      <span style=color:#f92672>external_gateway_info</span>:
-        <span style=color:#f92672>network</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>network_external }</span>
-      <span style=color:#f92672>name</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>OS::stack_name }</span>
-
-  <span style=color:#f92672>router_if</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Neutron::RouterInterface</span>
-    <span style=color:#f92672>properties</span>:
-      <span style=color:#f92672>router</span>: { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>router }</span>
-      <span style=color:#f92672>subnet</span>: { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>subnet }</span>
-
-  <span style=color:#f92672>security_group</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Neutron::SecurityGroup</span>
-    <span style=color:#f92672>properties</span>:
-      <span style=color:#f92672>description</span>: <span style=color:#e6db74>&#34;Default security rules&#34;</span>
-      <span style=color:#f92672>name</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>OS::stack_name }</span>
-      <span style=color:#f92672>rules</span>:
-        <span style=color:#f92672>list_concat</span>:
-          - 
-            - { <span style=color:#f92672>direction</span>: <span style=color:#ae81ff>egress }</span>
-            - { <span style=color:#f92672>direction: egress, ethertype</span>: <span style=color:#e6db74>&#34;IPv6&#34;</span> }
-            - { <span style=color:#f92672>remote_mode</span>: <span style=color:#ae81ff>remote_group_id }</span>
-            - { <span style=color:#f92672>ethertype: IPv6, remote_mode</span>: <span style=color:#ae81ff>remote_group_id }</span>
-          - { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>security_group_rules }</span>
-        
-
-  <span style=color:#f92672>expose_security_group</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Neutron::SecurityGroup</span>
-    <span style=color:#f92672>properties</span>:
-      <span style=color:#f92672>description</span>: <span style=color:#e6db74>&#34;Generic external security rules&#34;</span>
-      <span style=color:#f92672>name</span>: { <span style=color:#f92672>list_join</span>: [<span style=color:#e6db74>&#39;-&#39;</span>,[{ <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>OS::stack_name }, &#34;expose&#34;]] }</span>
-      <span style=color:#f92672>rules</span>:
-        - { <span style=color:#f92672>port_range_max: 22, port_range_min: 22, protocol: tcp, remote_ip_prefix</span>: <span style=color:#e6db74>&#34;0.0.0.0/0&#34;</span> }
-
-  <span style=color:#f92672>management</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Heat::ResourceGroup</span>
-    <span style=color:#f92672>properties</span>:
-      <span style=color:#f92672>count</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>server_mgmt_count }</span>
-      <span style=color:#f92672>resource_def</span>:
-        <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Custom::Server</span>
-        <span style=color:#f92672>properties</span>:
-          <span style=color:#f92672>flavor</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>flavor }</span>
-          <span style=color:#f92672>image</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>image }</span>
-          <span style=color:#f92672>key_name</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>key_name }</span>
-          <span style=color:#f92672>metadata</span>:
-            <span style=color:#f92672>groups</span>: <span style=color:#e6db74>&#34;management&#34;</span>
-            <span style=color:#f92672>stack_name</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>OS::stack_name }</span>
-          <span style=color:#f92672>name</span>: { <span style=color:#f92672>list_join</span>: [<span style=color:#e6db74>&#39;.&#39;</span>,[<span style=color:#e6db74>&#34;mgmt-%index%&#34;</span><span style=color:#f92672>, get_param: OS::stack_name, get_param</span>: <span style=color:#ae81ff>dns_domain]] }</span>
-          <span style=color:#f92672>network</span>: { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>network }</span>
-          <span style=color:#f92672>security_groups</span>:
-            - { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>security_group }</span>
-
-  <span style=color:#f92672>login</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Heat::ResourceGroup</span>
-    <span style=color:#f92672>properties</span>:
-      <span style=color:#f92672>count</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>server_login_count }</span>
-      <span style=color:#f92672>resource_def</span>:
-        <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Custom::Server</span>
-        <span style=color:#f92672>properties</span>:
-          <span style=color:#f92672>flavor</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>flavor }</span>
-          <span style=color:#f92672>floating_network</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>floating_network }</span>
-          <span style=color:#f92672>image</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>image }</span>
-          <span style=color:#f92672>key_name</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>key_name }</span>
-          <span style=color:#f92672>metadata</span>:
-            <span style=color:#f92672>groups</span>: <span style=color:#e6db74>&#34;login&#34;</span>
-            <span style=color:#f92672>stack_name</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>OS::stack_name }</span>
-          <span style=color:#f92672>name</span>: { <span style=color:#f92672>list_join</span>: [<span style=color:#e6db74>&#39;.&#39;</span>,[<span style=color:#e6db74>&#34;login-%index%&#34;</span><span style=color:#f92672>, get_param: OS::stack_name, get_param</span>: <span style=color:#ae81ff>dns_domain]] }</span>
-          <span style=color:#f92672>network</span>: { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>network }</span>
-          <span style=color:#f92672>security_groups</span>:
-            - { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>security_group }</span>
-            - { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>expose_security_group }</span>
-
-  <span style=color:#f92672>compute</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Heat::ResourceGroup</span>
-    <span style=color:#f92672>properties</span>:
-      <span style=color:#f92672>count</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>server_cpu_count }</span>
-      <span style=color:#f92672>resource_def</span>:
-        <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Custom::Server</span>
-        <span style=color:#f92672>properties</span>:
-          <span style=color:#f92672>flavor</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>flavor }</span>
-          <span style=color:#f92672>image</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>image }</span>
-          <span style=color:#f92672>key_name</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>key_name }</span>
-          <span style=color:#f92672>metadata</span>:
-            <span style=color:#f92672>groups</span>: <span style=color:#e6db74>&#34;compute,desktop&#34;</span>
-            <span style=color:#f92672>stack_name</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>OS::stack_name }</span>
-          <span style=color:#f92672>name</span>: { <span style=color:#f92672>list_join</span>: [<span style=color:#e6db74>&#39;.&#39;</span>,[<span style=color:#e6db74>&#34;desktop-%index%&#34;</span><span style=color:#f92672>, get_param: OS::stack_name, get_param</span>: <span style=color:#ae81ff>dns_domain]] }</span>
-          <span style=color:#f92672>network</span>: { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>network }</span>
-          <span style=color:#f92672>security_groups</span>:
-            - { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>security_group }</span>
-
-  <span style=color:#f92672>compute_gpu</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Heat::ResourceGroup</span>
-    <span style=color:#f92672>properties</span>:
-      <span style=color:#f92672>count</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>server_gpu_count }</span>
-      <span style=color:#f92672>resource_def</span>:
-        <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Custom::Server</span>
-        <span style=color:#f92672>properties</span>:
-          <span style=color:#f92672>flavor</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>flavor_gpu }</span>
-          <span style=color:#f92672>image</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>image_gpu }</span>
-          <span style=color:#f92672>key_name</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>key_name }</span>
-          <span style=color:#f92672>metadata</span>:
-            <span style=color:#f92672>groups</span>: <span style=color:#e6db74>&#34;gpu,desktop&#34;</span>
-            <span style=color:#f92672>stack_name</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>OS::stack_name }</span>
-          <span style=color:#f92672>name</span>: { <span style=color:#f92672>list_join</span>: [<span style=color:#e6db74>&#39;.&#39;</span>,[<span style=color:#e6db74>&#34;gpu-%index%&#34;</span><span style=color:#f92672>, get_param: OS::stack_name, get_param</span>: <span style=color:#ae81ff>dns_domain]] }</span>
-          <span style=color:#f92672>network</span>: { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>network }</span>
-          <span style=color:#f92672>security_groups</span>:
-            - { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>security_group }</span>
-
-  <span style=color:#f92672>compute_gpu_large</span>:
-    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Heat::ResourceGroup</span>
-    <span style=color:#f92672>properties</span>:
-      <span style=color:#f92672>count</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>server_gpu_large_count }</span>
-      <span style=color:#f92672>resource_def</span>:
-        <span style=color:#f92672>type</span>: <span style=color:#ae81ff>OS::Custom::Server</span>
-        <span style=color:#f92672>properties</span>:
-          <span style=color:#f92672>flavor</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>flavor_gpu_large }</span>
-          <span style=color:#f92672>image</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>image_gpu }</span>
-          <span style=color:#f92672>key_name</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>key_name }</span>
-          <span style=color:#f92672>metadata</span>:
-            <span style=color:#f92672>groups</span>: <span style=color:#e6db74>&#34;gpu,desktop&#34;</span>
-            <span style=color:#f92672>stack_name</span>: { <span style=color:#f92672>get_param</span>: <span style=color:#ae81ff>OS::stack_name }</span>
-          <span style=color:#f92672>name</span>: { <span style=color:#f92672>list_join</span>: [<span style=color:#e6db74>&#39;.&#39;</span>,[<span style=color:#e6db74>&#34;gpu-lg-%index%&#34;</span><span style=color:#f92672>, get_param: OS::stack_name, get_param</span>: <span style=color:#ae81ff>dns_domain]] }</span>
-          <span style=color:#f92672>network</span>: { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>network }</span>
-          <span style=color:#f92672>security_groups</span>:
-            - { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>security_group }</span>
-
-</code></pre></div>
+<main><h1>Characterisation Virtual Laboratory (CVL@UWA)</h1><p>Characterisation Virtual Laboratory (CVL) @UWA is a part of the <a href=https://www.cvl.org.au/>Characterisation Virtual Laboratory</a> National project. It is hosted at the <a href=https://pawsey.org.au/>Pawsey Supercomputing Centre</a> primarily within the <a href=https://pawsey.org.au/systems/nimbus-cloud-service/>Nimbus Cloud Service</a>.</p>
+<p>This section outlines the UWA implementation of CVL housed at Pawsey. It contains details about design decisions, workflows, tools and other miscellaneous material.</p>
 <div class=edit-meta>
 Last updated on 23 Sep 2021
 <br>
 Published on 23 Sep 2021
-<br></div><nav class=pagination><a class="nav nav-prev" href=https://cerds.github.io/accs/ title=Accs><i class="fas fa-arrow-left" aria-hidden=true></i>&nbsp;Prev - Accs</a>
-<a class="nav nav-next" href=https://cerds.github.io/deployments/ title=Deployments>Next - Deployments <i class="fas fa-arrow-right" aria-hidden=true></i></a>
+<br></div><nav class=pagination><a class="nav nav-prev" href=https://cerds.github.io/accs/ title="The Australian Characterisation Commons at Scale (ACCS)"><i class="fas fa-arrow-left" aria-hidden=true></i>&nbsp;Prev - The Australian Characterisation Commons at Scale (ACCS)</a>
+<a class="nav nav-next" href=https://cerds.github.io/accs/cvl/ansible/ title=Ansible>Next - Ansible <i class="fas fa-arrow-right" aria-hidden=true></i></a>
 </nav><footer><p class=powered>Powered by <a href=https://gohugo.io>Hugo</a>. Theme by <a href=https://themes.gohugo.io/hugo-theme-techdoc/>TechDoc</a>. Designed by <a href=https://github.com/thingsym/hugo-theme-techdoc>Thingsym</a>.</p>
 </footer>
 </main>
@@ -307,9 +47,14 @@ Published on 23 Sep 2021
 <nav class=open-menu>
 <ul>
 <li><a href=https://cerds.github.io/>Home</a></li>
-<li class=parent><a href=https://cerds.github.io/accs/>Accs</a>
+<li class=parent><a href=https://cerds.github.io/accs/>The Australian Characterisation Commons at Scale (ACCS)</a>
 <ul class=sub-menu>
-<li class=active><a href=https://cerds.github.io/accs/cvl/>CVL@UWA</a></li>
+<li class="parent active"><a href=https://cerds.github.io/accs/cvl/>Characterisation Virtual Laboratory (CVL@UWA)</a>
+<ul class=sub-menu>
+<li><a href=https://cerds.github.io/accs/cvl/ansible/>Ansible</a></li>
+<li><a href=https://cerds.github.io/accs/cvl/openstack/>OpenStack</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href=https://cerds.github.io/deployments/>Deployments</a>
