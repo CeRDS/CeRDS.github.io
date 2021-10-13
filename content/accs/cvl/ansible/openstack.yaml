@@ -1,0 +1,20 @@
+plugin: openstack.cloud.openstack
+# ~/.ansible/hosts/openstack.yaml
+# https://docs.ansible.com/ansible/latest/collections/openstack/cloud/openstack_inventory.html
+# https://github.com/openstack/ansible-collections-openstack/blob/master/plugins/inventory/openstack.py
+cache: yes
+compose:
+  ansible_host: openstack.public_v4 | default(openstack.private_v4, true)
+  ansible_ssh_host: openstack.public_v4 | default(openstack.private_v4, true)
+  ansible_user: openstack.metadata.ansible_user | default("ubuntu")
+expand_hostvars: no
+#fail_on_errors: yes
+#all_projects: yes
+## Allows the use of `groups` csv server metadata field
+legacy_groups: yes
+groups:
+  cvl_uwa: openstack.name.endswith('cvl.uwa.edu.au') or (openstack.metadata.project_name == "CVLCLUSTER")
+keyed_groups:
+  - prefix: project_name
+    key: openstack.location.project.name
+leading_separator: no

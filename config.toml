@@ -5,7 +5,7 @@ theme = "hugo-theme-techdoc"
 
 [menu]
 [[menu.main]]
-name = "Home"
+name = "About"
 url = "/"
 weight = 1
 
