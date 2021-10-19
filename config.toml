@@ -1,4 +1,4 @@
-baseURL = 'https://cerds.github.io/'
+baseURL = 'https://www.cerds.org.au/'
 languageCode = 'en-us'
 title = 'Characterisation eResearch & Data Science (CeRDS)'
 theme = "hugo-theme-techdoc"
