@@ -4,6 +4,9 @@ date: 2021-09-23T09:33:00+08:00
 draft: false
 ---
 
+Infrastructure as code ref., private repository
+* https://github.com/CeRDS/deploy/tree/main/cvl
+
 ```bash
 # Create initial CVL Stack
 openstack --os-cloud nimbus-cvl stack create -e env.yaml -t stack.yaml cvl

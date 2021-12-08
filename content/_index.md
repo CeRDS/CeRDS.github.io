@@ -6,4 +6,4 @@ draft: false
 
 # Characterisation eResearch & Data Science
 
-As part of the [Center for Microscopy, Characterisation and Analysis](https://www.cmca.uwa.edu.au/) within [The University of Western Australia](https://www.uwa.edu.au/), we enable research excellence by providing world-class microscopy and microanalysis facilities and expertise to publicly funded researchers and industry.
+As part of the [Center for Microscopy, Characterisation and Analysis](https://www.cmca.uwa.edu.au/) (CMCA) within [The University of Western Australia](https://www.uwa.edu.au/) (UWA), we enable research excellence by providing world-class microscopy and microanalysis facilities and expertise to publicly funded researchers and industry.
