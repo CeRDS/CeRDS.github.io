@@ -17,19 +17,20 @@ CMCA includes nodes for a number of national groups such as Microscopy Australia
 CeRDS has been a contributing member of a number of National projects:
 * The Australian Characterisation Commons at Scale (ACCS)
   * TruDat (MyTARDIS) data store
-    * FAIR data repository
-    * Primarily but not limited to the management and processing upload retention of Microscopy Australia related imaging analysis workflows.
+    * [https://www.ands.org.au/working-with-data/fairdata](Findable, interoperable, accessible, reusable) (FAIR) data repository
+    * Primarily but not limited to the management, upload, processing and retention of Microscopy Australia related imaging analysis workflows.
   * Characterisation Virtual Laboratory (CVL)
     * Access to National HPC resource with Federated and consistent desktop experience
     * HPC as a Service (HPCaaS)
     * Software stack for research workflows and analysis
-    * Software and workflow containers, Singularity and Docker
+    * Software and workflow container repository, Singularity and Docker
     * VDI style interface
 * Australian Imaging Service (AIS)
   * AIS XNAT data repository
     * FAIR data repository
     * Primarily but not limited to the management and processing of Medical imaging
-    * Inclusion of Machine Learning (NVIDIA CLARA) for imaging analysis
+    * Library of supported XNAT pipelines
+    * Inclusion of Machine Learning (ML) for image analysis, NVIDIA CLARA
 * Australian Research Container Orchestration Services (ARCOS)
   * Integration of cloud native services into research workflows, focusing on Kubernetes within HPC infrastructure
   * Maintenance and retention of research related containers
