@@ -17,7 +17,7 @@ CMCA includes nodes for a number of national groups such as Microscopy Australia
 CeRDS has been a contributing member of a number of National projects:
 * The Australian Characterisation Commons at Scale (ACCS)
   * TruDat (MyTARDIS) data store
-    * [https://www.ands.org.au/working-with-data/fairdata](Findable, interoperable, accessible, reusable) (FAIR) data repository
+    * [Findable, interoperable, accessible, reusable](https://www.ands.org.au/working-with-data/fairdata) (FAIR) data repository
     * Primarily but not limited to the management, upload, processing and retention of Microscopy Australia related imaging analysis workflows.
   * Characterisation Virtual Laboratory (CVL)
     * Access to National HPC resource with Federated and consistent desktop experience
