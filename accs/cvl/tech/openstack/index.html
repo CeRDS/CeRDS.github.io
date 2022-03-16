@@ -1,45 +1,16 @@
-<!doctype html><html lang=en-us>
-<head><meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>OpenStack - Characterisation eResearch & Data Science (CeRDS)</title><meta name=generator content="Hugo 0.93.3">
-<link href=https://www.cerds.org.au//index.xml rel=alternate type=application/rss+xml>
-<link rel=canonical href=https://www.cerds.org.au/accs/cvl/tech/openstack/>
-<link rel=stylesheet href=https://www.cerds.org.au/css/theme.min.css>
-<script src=https://use.fontawesome.com/releases/v5.0.6/js/all.js></script>
-<link rel=stylesheet href=https://www.cerds.org.au/css/chroma.min.css>
-<script src=https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js></script>
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>OpenStack - Characterisation eResearch & Data Science (CeRDS)</title><meta name=generator content="Hugo 0.94.2"><link href=https://www.cerds.org.au//index.xml rel=alternate type=application/rss+xml><link rel=canonical href=https://www.cerds.org.au/accs/cvl/tech/openstack/><link rel=stylesheet href=https://www.cerds.org.au/css/theme.min.css><script src=https://use.fontawesome.com/releases/v5.0.6/js/all.js></script>
+<link rel=stylesheet href=https://www.cerds.org.au/css/chroma.min.css><script src=https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script>
-<script src=https://www.cerds.org.au/js/bundle.js></script><style>:root{}</style><meta property="og:title" content="OpenStack">
-<meta property="og:description" content="Infrastructure as code ref., private repository
- https://github.com/CeRDS/deploy/tree/main/cvl  # Create initial CVL Stack openstack --os-cloud nimbus-cvl stack create -e env.yaml -t stack.yaml cvl  # Update Stack on changes openstack --os-cloud nimbus-cvl stack update -e env.yaml -t stack.yaml cvl  Example Environment file  --- # env.yaml # Heat environment file parameters:  dns_domain: uwa.edu.au  floating_network: &#34;Public external&#34;  floating_subnet: &#34;public-external-subnet&#34;  image: &#34;Pawsey - Ubuntu 20.04 - 2021-02&#34;  image_gpu: &#34;Pawsey - Ubuntu 20.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://www.cerds.org.au/accs/cvl/tech/openstack/"><meta property="article:section" content="accs">
-<meta property="article:published_time" content="2021-09-23T09:33:00+08:00">
-<meta property="article:modified_time" content="2021-09-23T09:33:00+08:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="OpenStack">
-<meta name=twitter:description content="Infrastructure as code ref., private repository
- https://github.com/CeRDS/deploy/tree/main/cvl  # Create initial CVL Stack openstack --os-cloud nimbus-cvl stack create -e env.yaml -t stack.yaml cvl  # Update Stack on changes openstack --os-cloud nimbus-cvl stack update -e env.yaml -t stack.yaml cvl  Example Environment file  --- # env.yaml # Heat environment file parameters:  dns_domain: uwa.edu.au  floating_network: &#34;Public external&#34;  floating_subnet: &#34;public-external-subnet&#34;  image: &#34;Pawsey - Ubuntu 20.04 - 2021-02&#34;  image_gpu: &#34;Pawsey - Ubuntu 20.">
-<meta itemprop=name content="OpenStack">
-<meta itemprop=description content="Infrastructure as code ref., private repository
- https://github.com/CeRDS/deploy/tree/main/cvl  # Create initial CVL Stack openstack --os-cloud nimbus-cvl stack create -e env.yaml -t stack.yaml cvl  # Update Stack on changes openstack --os-cloud nimbus-cvl stack update -e env.yaml -t stack.yaml cvl  Example Environment file  --- # env.yaml # Heat environment file parameters:  dns_domain: uwa.edu.au  floating_network: &#34;Public external&#34;  floating_subnet: &#34;public-external-subnet&#34;  image: &#34;Pawsey - Ubuntu 20.04 - 2021-02&#34;  image_gpu: &#34;Pawsey - Ubuntu 20."><meta itemprop=datePublished content="2021-09-23T09:33:00+08:00">
-<meta itemprop=dateModified content="2021-09-23T09:33:00+08:00">
-<meta itemprop=wordCount content="1022">
-<meta itemprop=keywords content></head><body><div class=container><header>
-<h1>Characterisation eResearch & Data Science (CeRDS)</h1></header><div class=global-menu>
-<nav>
-<ul>
-<li><a href=/>About</a></li></ul></nav></div><div class=content-container>
-<main><h1>OpenStack</h1><p>Infrastructure as code ref., private repository</p><ul>
-<li><a href=https://github.com/CeRDS/deploy/tree/main/cvl>https://github.com/CeRDS/deploy/tree/main/cvl</a></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Create initial CVL Stack</span>
+<script src=https://www.cerds.org.au/js/bundle.js></script><style>:root{}</style><meta property="og:title" content="OpenStack"><meta property="og:description" content="Infrastructure as code ref., private repository
+ https://github.com/CeRDS/deploy/tree/main/cvl  # Create initial CVL Stack openstack --os-cloud nimbus-cvl stack create -e env.yaml -t stack.yaml cvl  # Update Stack on changes openstack --os-cloud nimbus-cvl stack update -e env.yaml -t stack.yaml cvl  Example Environment file  --- # env.yaml # Heat environment file parameters:  dns_domain: uwa.edu.au  floating_network: &#34;Public external&#34;  floating_subnet: &#34;public-external-subnet&#34;  image: &#34;Pawsey - Ubuntu 20.04 - 2021-02&#34;  image_gpu: &#34;Pawsey - Ubuntu 20."><meta property="og:type" content="article"><meta property="og:url" content="https://www.cerds.org.au/accs/cvl/tech/openstack/"><meta property="article:section" content="accs"><meta property="article:published_time" content="2021-09-23T09:33:00+08:00"><meta property="article:modified_time" content="2021-09-23T09:33:00+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="OpenStack"><meta name=twitter:description content="Infrastructure as code ref., private repository
+ https://github.com/CeRDS/deploy/tree/main/cvl  # Create initial CVL Stack openstack --os-cloud nimbus-cvl stack create -e env.yaml -t stack.yaml cvl  # Update Stack on changes openstack --os-cloud nimbus-cvl stack update -e env.yaml -t stack.yaml cvl  Example Environment file  --- # env.yaml # Heat environment file parameters:  dns_domain: uwa.edu.au  floating_network: &#34;Public external&#34;  floating_subnet: &#34;public-external-subnet&#34;  image: &#34;Pawsey - Ubuntu 20.04 - 2021-02&#34;  image_gpu: &#34;Pawsey - Ubuntu 20."><meta itemprop=name content="OpenStack"><meta itemprop=description content="Infrastructure as code ref., private repository
+ https://github.com/CeRDS/deploy/tree/main/cvl  # Create initial CVL Stack openstack --os-cloud nimbus-cvl stack create -e env.yaml -t stack.yaml cvl  # Update Stack on changes openstack --os-cloud nimbus-cvl stack update -e env.yaml -t stack.yaml cvl  Example Environment file  --- # env.yaml # Heat environment file parameters:  dns_domain: uwa.edu.au  floating_network: &#34;Public external&#34;  floating_subnet: &#34;public-external-subnet&#34;  image: &#34;Pawsey - Ubuntu 20.04 - 2021-02&#34;  image_gpu: &#34;Pawsey - Ubuntu 20."><meta itemprop=datePublished content="2021-09-23T09:33:00+08:00"><meta itemprop=dateModified content="2021-09-23T09:33:00+08:00"><meta itemprop=wordCount content="1022"><meta itemprop=keywords content></head><body><div class=container><header><h1>Characterisation eResearch & Data Science (CeRDS)</h1></header><div class=global-menu><nav><ul><li><a href=/>About</a></li></ul></nav></div><div class=content-container><main><h1>OpenStack</h1><p>Infrastructure as code ref., private repository</p><ul><li><a href=https://github.com/CeRDS/deploy/tree/main/cvl>https://github.com/CeRDS/deploy/tree/main/cvl</a></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Create initial CVL Stack</span>
 </span></span><span style=display:flex><span>openstack --os-cloud nimbus-cvl stack create -e env.yaml -t stack.yaml cvl
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#75715e># Update Stack on changes</span>
 </span></span><span style=display:flex><span>openstack --os-cloud nimbus-cvl stack update -e env.yaml -t stack.yaml cvl
-</span></span></code></pre></div><ul>
-<li>Example Environment file</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span>---
+</span></span></code></pre></div><ul><li>Example Environment file</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span>---
 </span></span><span style=display:flex><span><span style=color:#75715e># env.yaml</span>
 </span></span><span style=display:flex><span><span style=color:#75715e># Heat environment file</span>
 </span></span><span style=display:flex><span><span style=color:#f92672>parameters</span>:
@@ -58,8 +29,7 @@
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#f92672>resource_registry</span>:
 </span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;OS::Custom::Server&#34;: </span><span style=color:#ae81ff>file:///path/to/server.yaml</span>
-</span></span></code></pre></div><ul>
-<li>Heat Orchestration Template (HOT)</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>heat_template_version</span>: <span style=color:#e6db74>2018-08-31</span>
+</span></span></code></pre></div><ul><li>Heat Orchestration Template (HOT)</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>heat_template_version</span>: <span style=color:#e6db74>2018-08-31</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#f92672>description</span>: <span style=color:#ae81ff>OS::Custom::Server</span>
 </span></span><span style=display:flex><span>
@@ -369,34 +339,7 @@
 </span></span><span style=display:flex><span>          <span style=color:#f92672>network</span>: { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>network }</span>
 </span></span><span style=display:flex><span>          <span style=color:#f92672>security_groups</span>:
 </span></span><span style=display:flex><span>            - { <span style=color:#f92672>get_resource</span>: <span style=color:#ae81ff>security_group }</span>
-</span></span></code></pre></div><div class=edit-meta>
-Last updated on 23 Sep 2021
-<br>
-Published on 23 Sep 2021
-<br></div><nav class=pagination><a class="nav nav-prev" href=https://www.cerds.org.au/accs/cvl/tech/ansible/ title=Ansible><i class="fas fa-arrow-left" aria-hidden=true></i>&nbsp;Prev - Ansible</a>
-<a class="nav nav-next" href=https://www.cerds.org.au/accs/cvl/user/ title="User documents">Next - User documents <i class="fas fa-arrow-right" aria-hidden=true></i></a>
-</nav><footer><p class=powered>Powered by <a href=https://gohugo.io>Hugo</a>. Theme by <a href=https://themes.gohugo.io/hugo-theme-techdoc/>TechDoc</a>. Designed by <a href=https://github.com/thingsym/hugo-theme-techdoc>Thingsym</a>.</p></footer></main><div class=sidebar>
-<nav class=open-menu>
-<ul>
-<li><a href=https://www.cerds.org.au/>Home</a></li><li><a href=https://www.cerds.org.au/arcos/>Australian Research Container Orchestration Services (ARCOS)</a>
-<ul class=sub-menu>
-<li><a href=https://www.cerds.org.au/arcos/present_202201/>ARCOS presentation 01/2022</a></li></ul></li><li class=parent><a href=https://www.cerds.org.au/accs/>The Australian Characterisation Commons at Scale (ACCS)</a>
-<ul class=sub-menu>
-<li class=parent><a href=https://www.cerds.org.au/accs/cvl/>Characterisation Virtual Laboratory (CVL@UWA)</a>
-<ul class=sub-menu>
-<li class=parent><a href=https://www.cerds.org.au/accs/cvl/tech/>Technical documents</a>
-<ul class=sub-menu>
-<li><a href=https://www.cerds.org.au/accs/cvl/tech/ansible/>Ansible</a></li><li class=active><a href=https://www.cerds.org.au/accs/cvl/tech/openstack/>OpenStack</a></li></ul></li><li><a href=https://www.cerds.org.au/accs/cvl/user/>User documents</a>
-<ul class=sub-menu>
-<li><a href=https://www.cerds.org.au/accs/cvl/user/access/>Access CVL@UWA</a></li></ul></li></ul></li><li><a href=https://www.cerds.org.au/accs/present_202202/>ACCS presentation 02/2022</a></li><li><a href=https://www.cerds.org.au/accs/trudat/>TruDat (MyTARDIS) data store</a></li></ul></li><li><a href=https://www.cerds.org.au/ais/>Australian Imaging Service (AIS)</a>
-<ul class=sub-menu>
-<li><a href=https://www.cerds.org.au/ais/tech/ml_clara/>Machine Learning (ML) and Clara</a></li><li><a href=https://www.cerds.org.au/ais/xnat/>XNAT</a></li></ul></li><li><a href=https://www.cerds.org.au/infrastructure/>Infrastructure as Code (IaC)</a>
-<ul class=sub-menu>
-<li><a href=https://www.cerds.org.au/infrastructure/juju/>Juju</a></li><li><a href=https://www.cerds.org.au/infrastructure/kubernetes/>Kubernetes, Helm and Kustomize</a></li></ul></li></ul></nav><div class=sidebar-footer><b>Contact us</b>
-<a href=mailto:research-cmca@uwa.edu.au>research-cmca@uwa.edu.au</a>
-</div></div></div><a href=# id=backtothetop-fixed class=backtothetop data-backtothetop-duration=600 data-backtothetop-easing=easeOutQuart data-backtothetop-fixed-fadein=1000 data-backtothetop-fixed-fadeout=1000 data-backtothetop-fixed-bottom=10 data-backtothetop-fixed-right=20>
-<span class="fa-layers fa-fw">
-<i class="fas fa-circle"></i>
-<i class="fas fa-arrow-circle-up"></i>
-</span></a>
-</div></body></html>
+</span></span></code></pre></div><div class=edit-meta>Last updated on 23 Sep 2021<br>Published on 23 Sep 2021<br></div><nav class=pagination><a class="nav nav-prev" href=https://www.cerds.org.au/accs/cvl/tech/ansible/ title=Ansible><i class="fas fa-arrow-left" aria-hidden=true></i>&nbsp;Prev - Ansible</a>
+<a class="nav nav-next" href=https://www.cerds.org.au/accs/cvl/user/ title="User documents">Next - User documents <i class="fas fa-arrow-right" aria-hidden=true></i></a></nav><footer><p class=powered>Powered by <a href=https://gohugo.io>Hugo</a>. Theme by <a href=https://themes.gohugo.io/hugo-theme-techdoc/>TechDoc</a>. Designed by <a href=https://github.com/thingsym/hugo-theme-techdoc>Thingsym</a>.</p></footer></main><div class=sidebar><nav class=open-menu><ul><li><a href=https://www.cerds.org.au/>Home</a></li><li><a href=https://www.cerds.org.au/arcos/>Australian Research Container Orchestration Services (ARCOS)</a><ul class=sub-menu><li><a href=https://www.cerds.org.au/arcos/present_202201/>ARCOS presentation 01/2022</a></li></ul></li><li class=parent><a href=https://www.cerds.org.au/accs/>The Australian Characterisation Commons at Scale (ACCS)</a><ul class=sub-menu><li class=parent><a href=https://www.cerds.org.au/accs/cvl/>Characterisation Virtual Laboratory (CVL@UWA)</a><ul class=sub-menu><li class=parent><a href=https://www.cerds.org.au/accs/cvl/tech/>Technical documents</a><ul class=sub-menu><li><a href=https://www.cerds.org.au/accs/cvl/tech/ansible/>Ansible</a></li><li class=active><a href=https://www.cerds.org.au/accs/cvl/tech/openstack/>OpenStack</a></li></ul></li><li><a href=https://www.cerds.org.au/accs/cvl/user/>User documents</a><ul class=sub-menu><li><a href=https://www.cerds.org.au/accs/cvl/user/access/>Access CVL@UWA</a></li></ul></li></ul></li><li><a href=https://www.cerds.org.au/accs/present_202202/>ACCS presentation 02/2022</a></li><li><a href=https://www.cerds.org.au/accs/trudat/>TruDat (MyTARDIS) data store</a></li></ul></li><li><a href=https://www.cerds.org.au/ais/>Australian Imaging Service (AIS)</a><ul class=sub-menu><li><a href=https://www.cerds.org.au/ais/tech/ml_clara/>Machine Learning (ML) and Clara</a></li><li><a href=https://www.cerds.org.au/ais/xnat/>XNAT</a></li></ul></li><li><a href=https://www.cerds.org.au/infrastructure/>Infrastructure as Code (IaC)</a><ul class=sub-menu><li><a href=https://www.cerds.org.au/infrastructure/juju/>Juju</a></li><li><a href=https://www.cerds.org.au/infrastructure/kubernetes/>Kubernetes, Helm and Kustomize</a></li></ul></li></ul></nav><div class=sidebar-footer><b>Contact us</b>
+<a href=mailto:research-cmca@uwa.edu.au>research-cmca@uwa.edu.au</a></div></div></div><a href=# id=backtothetop-fixed class=backtothetop data-backtothetop-duration=600 data-backtothetop-easing=easeOutQuart data-backtothetop-fixed-fadein=1000 data-backtothetop-fixed-fadeout=1000 data-backtothetop-fixed-bottom=10 data-backtothetop-fixed-right=20><span class="fa-layers fa-fw"><i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i></span></a></div></body></html>
